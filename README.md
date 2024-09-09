@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="" rel="noopener">
- <img width="700px" height="350px" src="./GR.png" alt="Project Image"></a>
+ <img width="700px" height="500px" src="./GR.png" alt="Project Image"></a>
 </p>
 
 <h3 align="center">Connect 4 Built with NextJS </h3></h3>
