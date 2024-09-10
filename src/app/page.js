@@ -1,75 +1,52 @@
 "use client"
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import Board from "./components/Board";
-import DropZone from "./components/DropZone";
-import GameHeader from "./components/GameHeader";
-import ReactAudioPlayer from 'react-audio-player';
+import {MdOutlineGamepad} from "react-icons/md";
+import { IoMdSettings } from "react-icons/io";
 
 export default function Home() {
-      const [p1Count, setP1Count] = useState(0);
-      const [p2Count, setP2Count] = useState(0);
-      const [turn,setTurn] = useState(1);
-      const [audioError, setAudioError] = useState();
-      const [playAudio, setPlayAudio] = useState(false);
+ 
   return (
-    <>   
-    <div className="w-full flex items-center justify-center">
-<main className=" bg-[rgb(41,41,41)] min-h-screen  p-24 py-5  container mx-auto px-5 flex flex-col  items-center  space-y-3">
-<ReactAudioPlayer
-  src="/static/game.mp3"
-  autoPlay
-  muted={!playAudio}
-  controls={false}
-  loop
-/>
-      <GameHeader playAudio={playAudio} setPlayAudio={setPlayAudio} />
+    <main className="w-full min-h-screen bg-[rgb(41,41,41)] container mx-auto px-5  p-24 py-5   flex flex-col  items-center justify-center  space-y-3" style={{
+      background:"url(/static/bg.jpg)",
+      backgroundSize:"cover"
+    }}>   
 
-      <div className="flex items-center justify-center gap-5">
- {/* Player 1 */}
- <div className="flex flex-col items-center ">
- <div className={`${turn ===1? "bg-green-600":"bg-gray-600"} h-6 w-6 rounded-full my-1`}> </div>
-
-{/* Turn Indicator */}
- <div className='flex rounded-3xl py-5 px-8 flex-col gap-4 items-center bg-[rgb(66,66,66)]'>
-                    <div>
-                    <img src='/static/player1.jpg' alt='player1_img' className='h-16 w-16 rounded-full text-xs object-cover border' />
-                    </div>
-                    <div className='xl font-bold'>
-                    Player 1
-                    </div>
-                    <div className='text-4xl'>
-{p1Count}                    </div>
-                </div>   
+    {/* Nav */}
+    <div className="flex gap-5 items-center w-full px-96 justify-between">
+          {/* Icon */}
+    <div className="flex items-center justify-center my-5 text-4xl  text-white backdrop-blur-lg bg-[rgb(66,66,66)] bg-opacity-50 p-5 px-8 rounded-full gap-1" style={{border:"dotted solid 2px"}}>
+      <div className="text-5xl " style={{rotate:"15deg"}}>
+          <MdOutlineGamepad />
+      </div>
+      <div className="font-semibold cursor-pointer">
+        GR
+    </div>
+</div>
+<div className=" flex gap-2 ">
+  {/* Connect wallet */}
+<div className="font-semibold cursor-pointer text-2xl  text-white backdrop-blur-lg bg-green-600 bg-opacity-100 p-5 px-8 rounded-full">
+     Connect Wallet
+    </div>
+    {/* Settings  */}
+    <div className='font-semibold cursor-pointer text-4xl  text-white backdrop-blur-lg bg-[rgb(66,66,66)] bg-opacity-50 p-5 rounded-full'>
+              <IoMdSettings />   
+            </div>
 </div>
 
-      <div>
-      <DropZone turn={turn} setTurn={setTurn} p1Count={p1Count} setP1Count={setP1Count} p2Count={p2Count} setP2Count={setP2Count}/>
-      <Board />   
       </div>
-      {/* Player 2 */}
-      <div className="flex flex-col items-center ">
 
-        {/* Turn Indicator */}
-        
-      <div className={`${turn ===2? "bg-green-600":"bg-gray-600"} h-6 w-6 rounded-full my-1`}> </div>
-         <div className='flex rounded-3xl py-5 px-8 flex-col gap-4 items-center bg-[rgb(66,66,66)]'>
-                    <div>
-                    <img src='/static/player2.jpg' alt='player2_img' className='h-16 w-16 rounded-full text-xs object-cover border' />
-                    </div>
-                    <div className='xl font-bold'>
-                    Player 2
-                    </div>
-                    <div className='text-4xl'>
-                        {p2Count}
-                    </div>
-                </div>  
-      </div>
-     
-      </div>
-    </main>
+    {/* Game Options */}
+    <div className={"grid grid-cols-2 gap-5"}>   
+      <Link href={"/Arcade"} className="bg-[rgb(66,66,66)] hover:text-[rgb(66,66,66)] hover:bg-white text-5xl backdrop-blur-lg bg-opacity-80 p-5 h-56 px-8 py-1 rounded-lg flex items-center justify-center w-96 text-center border ">Arcade</Link>
+   <Link href={"/PlayWithFriend"} className="bg-[rgb(66,66,66)] hover:text-[rgb(66,66,66)] hover:bg-white text-5xl backdrop-blur-lg bg-opacity-80 p-5 h-56 px-8 py-1 rounded-lg flex items-center justify-center w-96 text-center border ">Play with <br /> a friend</Link>
+   <Link href={"/League"} className="bg-[rgb(66,66,66)] hover:text-[rgb(66,66,66)] hover:bg-white text-5xl backdrop-blur-lg bg-opacity-80 p-5 h-56 px-8 py-1 rounded-lg flex items-center justify-center w-96 text-center border ">League</Link>
+   <Link href={"/Training"} className="bg-[rgb(66,66,66)] hover:text-[rgb(66,66,66)] hover:bg-white text-5xl backdrop-blur-lg bg-opacity-80 p-5 h-56 px-8 py-1 rounded-lg flex items-center justify-center w-96 text-center border ">Training</Link>
+  
+
     </div>
-    
-    </>
+
+    </main>
  
   );
 }

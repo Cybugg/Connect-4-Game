@@ -7,7 +7,7 @@ import { MdMusicOff } from "react-icons/md";
 function GameHeader({winner,turn,playAudio, setPlayAudio}) {
   return (
     <section className='w-full container mx-auto px-36 pb-12'>
-        <div className='flex justify-between gap-36 w-full '>
+        <div className='flex justify-between gap-5 w-full '>
             <div className='bg-[rgb(66,66,66)] rounded-full px-3 py-2 cursor-pointer'>
                 Menu
             </div>

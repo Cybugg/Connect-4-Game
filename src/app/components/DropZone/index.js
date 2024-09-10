@@ -86,7 +86,7 @@ const DropZone = ({turn,setTurn,p1Count, setP1Count,p2Count, setP2Count}) => {
     return <div className="drop-zone">
         {dropped.map((m,i) => 
             <div key={i} 
-                className={`p${m.player}`}
+                className={`p${m.player} bg-opacity-100 border-[3px] border-[rgb(184,184,184)]` }
                 style={{transform:`translate(${m.y*size}px,${m.x*(size)+115}px)`}}>
             </div>
         )}
